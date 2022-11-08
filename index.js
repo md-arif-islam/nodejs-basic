@@ -1,9 +1,18 @@
-const School = require("./school");
+const http = require("http");
 
-const school = new School();
-
-school.on("bellRing", ({ period, text }) => {
-  console.log(`We need to run because ${period} ${text}`);
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.write("Hello Programmers!");
+    res.write("How are you doing");
+    res.end();
+  } else if (req.url === "/about") {
+    res.write("Abour us page");
+    res.end();
+  } else {
+    res.write("Not Found");
+    res.end();
+  }
 });
+server.listen(3000);
 
-school.startPeriod();
+console.log("Listening on port 3000");
