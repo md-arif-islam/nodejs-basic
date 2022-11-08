@@ -1,3 +1,9 @@
-const OS = require("os");
+const School = require("./school");
 
-console.log(OS.cpus());
+const school = new School();
+
+school.on("bellRing", ({ period, text }) => {
+  console.log(`We need to run because ${period} ${text}`);
+});
+
+school.startPeriod();
